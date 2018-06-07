@@ -67,9 +67,13 @@ public class DetailActivity extends AppCompatActivity {
         mAsKnownAs = (TextView) findViewById(R.id.also_known_tv);
         List<String> asKnownAsList = sandwich.getAlsoKnownAs();
         String asKnownAs = "";
+        int counter = 1;
         for (String item : asKnownAsList) {
             asKnownAs += item;
-            asKnownAs += " ";
+            if (counter < asKnownAsList.size()) {
+                counter++;
+                asKnownAs += ", ";
+            }
         }
         mAsKnownAs.setText(asKnownAs);
 
@@ -82,9 +86,13 @@ public class DetailActivity extends AppCompatActivity {
         mIngredients = (TextView) findViewById(R.id.ingredients_tv);
         List<String> ingredientList = sandwich.getIngredients();
         String ingredients = "";
+        counter = 1;
         for (String ingredient : ingredientList) {
             ingredients += ingredient;
-            ingredients += " ";
+            if (counter < ingredientList.size()) {
+                counter++;
+                ingredients += ", ";
+            }
         }
         mIngredients.setText(ingredients);
     }
