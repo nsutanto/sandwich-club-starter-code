@@ -5,12 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="8dp">
 
     <ImageView
         android:id="@+id/image_iv"
-        android:layout_width="3dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/sandwich_picture_content_description"
         android:scaleType="centerCrop"
@@ -23,6 +25,7 @@
         android:id="@+id/textViewPlaceOrigin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/detail_place_of_origin_label"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/image_iv" />
@@ -31,6 +34,8 @@
         android:id="@+id/origin_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewPlaceOrigin"
         app:layout_constraintTop_toBottomOf="@+id/image_iv" />
@@ -40,15 +45,17 @@
         android:id="@+id/textViewAsKnownAs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/detail_also_known_as_label"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textViewPlaceOrigin"
-        app:layout_constraintTop_toBottomOf="@+id/textViewPlaceOrigin" />
+        app:layout_constraintTop_toBottomOf="@+id/origin_tv" />
 
     <TextView
         android:id="@+id/also_known_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/origin_tv"
         app:layout_constraintTop_toBottomOf="@+id/origin_tv" />
@@ -57,6 +64,7 @@
         android:id="@+id/textViewDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/detail_description_label"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textViewAsKnownAs"
@@ -66,6 +74,7 @@
         android:id="@+id/description_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/also_known_tv"
         app:layout_constraintTop_toBottomOf="@+id/also_known_tv" />
@@ -74,15 +83,17 @@
         android:id="@+id/textViewIngredients"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/detail_ingredients_label"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textViewDescription"
-        app:layout_constraintTop_toBottomOf="@+id/textViewDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/description_tv" />
 
     <TextView
         android:id="@+id/ingredients_tv"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/description_tv"
         app:layout_constraintTop_toBottomOf="@+id/description_tv" />
