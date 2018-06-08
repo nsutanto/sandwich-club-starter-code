@@ -23,13 +23,13 @@ public class JsonUtils {
         try {
             JSONObject jsonObj = new JSONObject(json);
             JSONObject nameObj = jsonObj.getJSONObject(KEY_NAME);
-            String mainName = nameObj.getString(KEY_MAIN_NAME);
+            String mainName = nameObj.optString(KEY_MAIN_NAME);
             JSONArray alsoKnownAsArray = nameObj.getJSONArray(KEY_ALSO_KNOW_AS);
             List<String> alsoKnownAsList = convertToList(alsoKnownAsArray);
 
-            String placeOfOrigin = jsonObj.getString(KEY_PLACE_OF_ORIGIN);
-            String description = jsonObj.getString(KEY_DESCRIPTION);
-            String image = jsonObj.getString(KEY_IMAGE);
+            String placeOfOrigin = jsonObj.optString(KEY_PLACE_OF_ORIGIN);
+            String description = jsonObj.optString(KEY_DESCRIPTION);
+            String image = jsonObj.optString(KEY_IMAGE);
             JSONArray ingredientsArray = jsonObj.getJSONArray(INGREDIENTS);
             List<String> ingredientList = convertToList(ingredientsArray);
 
@@ -45,7 +45,7 @@ public class JsonUtils {
         List<String> strings = new ArrayList<String>();
 
         for (int i = 0; i < jsonArray.length(); i++) {
-            strings.add(jsonArray.getString(i));
+            strings.add(jsonArray.optString(i));
         }
         return strings;
     }
