@@ -11,19 +11,26 @@ import java.util.List;
 
 public class JsonUtils {
 
+    public static final String KEY_MAIN_NAME = "mainName";
+    public static final String KEY_ALSO_KNOW_AS = "alsoKnownAs";
+    public static final String KEY_PLACE_OF_ORIGIN = "placeOfOrigin";
+    public static final String KEY_DESCRIPTION = "description";
+    public static final String KEY_IMAGE = "image";
+    public static final String INGREDIENTS = "ingredients";
+
     public static Sandwich parseSandwichJson(String json) {
 
         try {
             JSONObject jsonObj = new JSONObject(json);
-            JSONObject nameObj = jsonObj.getJSONObject("name");
-            String mainName = nameObj.getString("mainName");
-            JSONArray alsoKnownAsArray = nameObj.getJSONArray("alsoKnownAs");
+            JSONObject nameObj = jsonObj.getJSONObject(KEY_NAME);
+            String mainName = nameObj.getString(KEY_MAIN_NAME);
+            JSONArray alsoKnownAsArray = nameObj.getJSONArray(KEY_ALSO_KNOW_AS);
             List<String> alsoKnownAsList = convertToList(alsoKnownAsArray);
 
-            String placeOfOrigin = jsonObj.getString("placeOfOrigin");
-            String description = jsonObj.getString("description");
-            String image = jsonObj.getString("image");
-            JSONArray ingredientsArray = jsonObj.getJSONArray("ingredients");
+            String placeOfOrigin = jsonObj.getString(KEY_PLACE_OF_ORIGIN);
+            String description = jsonObj.getString(KEY_DESCRIPTION);
+            String image = jsonObj.getString(KEY_IMAGE);
+            JSONArray ingredientsArray = jsonObj.getJSONArray(INGREDIENTS);
             List<String> ingredientList = convertToList(ingredientsArray);
 
             return new Sandwich(mainName, alsoKnownAsList, placeOfOrigin, description, image, ingredientList);
