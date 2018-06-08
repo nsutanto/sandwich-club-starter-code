@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,19 +14,33 @@ import com.udacity.sandwichclub.utils.JsonUtils;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
-    private TextView mDescription;
-    private TextView mAsKnownAs;
-    private TextView mPlaceOfOrigin;
-    private TextView mIngredients;
+
+    @BindView(R.id.description_tv)
+    TextView mDescription;
+
+    @BindView(R.id.also_known_tv)
+    TextView mAsKnownAs;
+
+    @BindView(R.id.origin_tv)
+    TextView mPlaceOfOrigin;
+
+    @BindView(R.id.ingredients_tv)
+    TextView mIngredients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        // bind the view using butterknife
+        ButterKnife.bind(this);
 
         ImageView ingredientsIv = findViewById(R.id.image_iv);
 
@@ -64,36 +79,16 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        mAsKnownAs = (TextView) findViewById(R.id.also_known_tv);
         List<String> asKnownAsList = sandwich.getAlsoKnownAs();
-        String asKnownAs = "";
-        int counter = 1;
-        for (String item : asKnownAsList) {
-            asKnownAs += item;
-            if (counter < asKnownAsList.size()) {
-                counter++;
-                asKnownAs += ", ";
-            }
-        }
+        String asKnownAs = TextUtils.join(", ", asKnownAsList);
+
         mAsKnownAs.setText(asKnownAs);
-
-        mDescription = (TextView) findViewById(R.id.description_tv);
         mDescription.setText(sandwich.getDescription());
-
-        mPlaceOfOrigin = (TextView) findViewById(R.id.origin_tv);
         mPlaceOfOrigin.setText(sandwich.getPlaceOfOrigin());
 
-        mIngredients = (TextView) findViewById(R.id.ingredients_tv);
         List<String> ingredientList = sandwich.getIngredients();
-        String ingredients = "";
-        counter = 1;
-        for (String ingredient : ingredientList) {
-            ingredients += ingredient;
-            if (counter < ingredientList.size()) {
-                counter++;
-                ingredients += ", ";
-            }
-        }
+        String ingredients = TextUtils.join(", ", ingredientList);;
+
         mIngredients.setText(ingredients);
     }
 }
