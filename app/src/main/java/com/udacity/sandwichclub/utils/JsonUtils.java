@@ -11,6 +11,7 @@ import java.util.List;
 
 public class JsonUtils {
 
+    public static final String KEY_NAME = "name";
     public static final String KEY_MAIN_NAME = "mainName";
     public static final String KEY_ALSO_KNOW_AS = "alsoKnownAs";
     public static final String KEY_PLACE_OF_ORIGIN = "placeOfOrigin";
